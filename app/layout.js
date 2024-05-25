@@ -1,7 +1,11 @@
-import { Inter } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
+import Navbar from "./components/navbar/Navbar";
+import Footer from "./components/footer/Footer";
+import { Box, ChakraProvider } from "@chakra-ui/react";
+import IsMobileProvider from "./utils/isMobileContext/IsMobileContext";
 
-const inter = Inter({ subsets: ["latin"] });
+const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
 export const metadata = {
   title: "Create Next App",
@@ -11,7 +15,15 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${poppins.className} chakra-ui_root`}>
+        <ChakraProvider>
+          <IsMobileProvider>
+            <Navbar />
+            <Box as={"main"}>{children}</Box>
+            <Footer />
+          </IsMobileProvider>
+        </ChakraProvider>
+      </body>
     </html>
   );
 }

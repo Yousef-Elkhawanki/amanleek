@@ -2,7 +2,9 @@
     --light__bg:#0c0c0c;
     --white-color:#fff
 }
-
+*:not(a){
+  cursor: default;
+}
 .chakra-ui_root {
   background-color: var(--light__bg) ;
   color: var(--white-color);

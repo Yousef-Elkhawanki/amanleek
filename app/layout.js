@@ -4,6 +4,8 @@ import Navbar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import { Box, ChakraProvider } from "@chakra-ui/react";
 import IsMobileProvider from "./utils/isMobileContext/IsMobileContext";
+import CustomCursor from "./components/customCursor/CustomCursor";
+import dynamic from "next/dynamic";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "500", "600"] });
 
@@ -13,12 +15,20 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  const CursorDynamic = dynamic(() => import("./components/customCursor/CustomCursor"), {
+    ssr: false,
+  });
+  const MenuDynamic = dynamic(() => import("./components/menu/Menu"), {
+    ssr: false,
+  });
   return (
     <html lang="en">
       <body className={`${poppins.className} chakra-ui_root`}>
         <ChakraProvider>
           <IsMobileProvider>
             <Navbar />
+            <CursorDynamic />
+            <MenuDynamic />
             <Box as={"main"}>{children}</Box>
             <Footer />
           </IsMobileProvider>

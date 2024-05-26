@@ -1,12 +1,20 @@
+"use client";
 import { Box, Container, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useRef } from "react";
 import { Six_Caps } from "next/font/google";
-import Hover from "@/app/animation/Hover";
+// import SplitText from "../splitText/SplitText";
+import { useGSAP } from "@gsap/react";
 const six_Caps = Six_Caps({ subsets: ["latin"], weight: ["400"] });
-
+import gsap from "gsap";
 const HomeBannerSection = () => {
+  const containerRef = useRef(null);
+  useGSAP(() => {
+    gsap.fromTo(".homeBanner h1", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.in" });
+    gsap.fromTo(".homeBanner p", { autoAlpha: 0, y: -10 }, { autoAlpha: 0.5, y: 0, duration: 0.8, delay: 0.5, ease: "power3.inOut" });
+    return () => gsap.killTweensOf(containerRef.current);
+  }, []);
   return (
-    <Box minH={"100vh"} display={"flex"} alignItems={"center"} justifyContent={"center"} textAlign={"center"}>
+    <Box minH={"60vh"} display={"flex"} alignItems={"center"} justifyContent={"center"} textAlign={"center"} ref={containerRef} className="homeBanner">
       <Container maxW={"1024px"}>
         <Box
           as="h1"
@@ -18,20 +26,19 @@ const HomeBannerSection = () => {
           display={"flex"}
           cursor={"default"}
           justifyContent={"center"}>
-          <Hover>A</Hover>
-          <Hover>M</Hover>
-          <Hover>a</Hover>
-          <Hover>n</Hover>
-          <Hover>l</Hover>
-          <Hover>e</Hover>
-          <Hover>e</Hover>
-          <Hover>k</Hover>
+          {/* <SplitText text="amanleek" /> */}
+          amanleek
         </Box>
         <Text
           fontSize={"1.2rem"}
           opacity={0.5}
           w={"90%"}
           m={"auto"}
+          textTransform={"uppercase"}
+          _selection={{
+            color: "white",
+            backgroundColor: "#ff4200",
+          }}
           sx={{
             "@media(max-width:600px)": {
               w: "100%",

@@ -12,21 +12,38 @@ const CustomCursor = () => {
   useGSAP(() => {
     const container = cursorRef.current;
     const handleMouseMove = (event) => {
-      console.log(getComputedStyle(event.target));
-      setColor(getComputedStyle(event.target).colorInterpolation);
+      console.log(event.target.getAttribute("src"));
+      if (event.target.getAttribute("src") != null) {
+        gsap.to(container, {
+          width: "8rem",
+          height: "8rem",
+          duration: 0.8,
+          background: "#fff",
+          color: "#0c0c0c",
+        });
+        container.textContent = "View";
+      } else {
+        container.textContent = "";
+        gsap.to(container, {
+          opacity: 1,
+          background: "unset",
+          width: "3rem",
+          height: "3rem",
+          duration: 0.8,
+        });
+      }
       const { clientX, clientY } = event;
-      const { top, left } = container.getBoundingClientRect();
-      const offsetX = clientX - 10;
-      const offsetY = clientY - 10;
+      const offsetX = clientX - 30;
+      const offsetY = clientY - 30;
       gsap.to(container, {
         x: offsetX,
         y: offsetY,
-        width: "2rem",
-        height: "2rem",
+        opacity: 1,
         duration: 0.8,
       });
+      setColor(getComputedStyle(event.target).colorInterpolation);
     };
-    const handleClickCursor = (e) => {
+    const handleClickCursor = (event) => {
       gsap.to(container, {
         width: "4rem",
         height: "4rem",
@@ -45,11 +62,11 @@ const CustomCursor = () => {
   return (
     !isMobile && (
       <Box
-        borderColor={"rgba(255,255,255,.2)"}
-        border={".5px solid"}
+        opacity={0}
+        border={"2.5px solid #cccc"}
         ref={cursorRef}
-        w={"2rem"}
-        height={"2rem"}
+        w={"3rem"}
+        height={"3rem"}
         borderRadius={"50%"}
         background={color}
         pos={"fixed"}
@@ -57,7 +74,10 @@ const CustomCursor = () => {
         top={0}
         zIndex={99999}
         pointerEvents={"none"}
-        backdropFilter={"blur(3px)"}></Box>
+        backdropFilter={"blur(1.5px)"}
+        display={"flex"}
+        alignItems={"center"}
+        justifyContent={"center"}></Box>
     )
   );
 };

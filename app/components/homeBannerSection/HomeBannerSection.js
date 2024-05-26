@@ -9,17 +9,17 @@ import gsap from "gsap";
 const HomeBannerSection = () => {
   const containerRef = useRef(null);
   useGSAP(() => {
-    gsap.fromTo(".homeBanner h1", { autoAlpha: 0, y: -10 }, { autoAlpha: 1, y: 0, duration: 0.8, ease: "power3.in" });
+    gsap.fromTo(".homeBanner h1", { autoAlpha: 0, y: -10, scale: 3 }, { autoAlpha: 1, y: 0, scale: 1, duration: 0.8, ease: "power3.in" });
     gsap.fromTo(".homeBanner p", { autoAlpha: 0, y: -10 }, { autoAlpha: 0.5, y: 0, duration: 0.8, delay: 0.5, ease: "power3.inOut" });
     return () => gsap.killTweensOf(containerRef.current);
   }, []);
   return (
-    <Box minH={"60vh"} display={"flex"} alignItems={"center"} justifyContent={"center"} textAlign={"center"} ref={containerRef} className="homeBanner">
+    <Box minH={"60vh"} display={"flex"} alignItems={"center"} justifyContent={"center"} textAlign={"center"} ref={containerRef} className="homeBanner" overflow={"hidden"}>
       <Container maxW={"1024px"}>
         <Box
           as="h1"
-          className={`${six_Caps.className}`}
-          fontSize={"calc(1rem + 24.15vw)"}
+          className={six_Caps.className}
+          fontSize={"calc(1rem + 10vw)"}
           letterSpacing={"10px"}
           textTransform={"uppercase"}
           lineHeight={1}

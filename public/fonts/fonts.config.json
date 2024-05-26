@@ -1,0 +1,16 @@
+{
+    "family": "Six Caps",
+    "variants": [
+        "400"
+    ],
+    "subsets": [
+        "latin"
+    ],
+    "src": [
+        {
+            "url": "/fonts/SixCaps-Regular.woff2",
+            "format": "woff2"
+        }
+    ],
+    "display": "swap"
+}

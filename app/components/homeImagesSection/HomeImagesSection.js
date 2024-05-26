@@ -1,31 +1,9 @@
 "use client";
 import { Box, Container } from "@chakra-ui/react";
-import { useGSAP } from "@gsap/react";
 import Image from "next/image";
-import React, { useEffect, useRef } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger"; // Register ScrollTrigger outside
+import React from "react";
 
 const HomeImagesSection = () => {
-  // const container = useRef();
-  // useGSAP(() => {
-  //   gsap.registerPlugin(ScrollTrigger);
-  //   gsap.defaults({ ease: "power3.inOut", duration: 3 });
-  //   const tl = gsap.timeline();
-  //   tl.fromTo(".image_slider2", { yPercent: 0 }, { yPercent: -150 }).fromTo(".image_slider3", { yPercent: 0 }, { yPercent: -100 });
-  //   ScrollTrigger.create({
-  //     animation: tl,
-  //     trigger: container.current,
-  //     start: "top top",
-  //     end: "+=5000",
-  //     scrub: true,
-  //     pin: true,
-  //     // markers: true,
-  //     pinSpacing: false,
-  //     pinSpacer: 1,
-  //     anticipatePin: 1,
-  //   });
-  // }, []);
   return (
     <Box className="images__container">
       <Container maxW={"1200px"} display={"flex"} flexWrap={"wrap"} gap={"1.5rem"} justifyContent={"flex-start"}>

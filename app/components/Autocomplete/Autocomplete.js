@@ -21,7 +21,7 @@ const Autocomplete = () => {
 
   return (
     <div>
-      <input value={searchTerm} onChange={handleInputChange} placeholder="Enter Suggestions" style={{ color: "red" }} />
+      <input value={searchTerm} onChange={handleInputChange} placeholder="Enter Suggestions" style={{ color: "#1d1d1d" }} />
       <ul>
         {filteredOptions.length > 0 ? (
           filteredOptions.map((option, index) => (

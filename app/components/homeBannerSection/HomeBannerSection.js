@@ -2,7 +2,6 @@
 import { Box, Container, Text } from "@chakra-ui/react";
 import React, { useRef } from "react";
 import { Six_Caps } from "next/font/google";
-// import SplitText from "../splitText/SplitText";
 import { useGSAP } from "@gsap/react";
 const six_Caps = Six_Caps({ subsets: ["latin"], weight: ["400"] });
 import gsap from "gsap";
@@ -26,7 +25,6 @@ const HomeBannerSection = () => {
           display={"flex"}
           cursor={"default"}
           justifyContent={"center"}>
-          {/* <SplitText text="amanleek" /> */}
           amanleek
         </Box>
         <Text
